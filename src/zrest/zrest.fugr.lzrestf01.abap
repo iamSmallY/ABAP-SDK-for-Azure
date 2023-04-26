@@ -67,7 +67,7 @@ ENDFORM.                    "set_requests
 *  <--  p2        text
 *----------------------------------------------------------------------*
 FORM set_responses .
-  DATA: lo_rest_http_client TYPE REF TO cl_rest_http_client,
+  DATA: lo_rest_http_client TYPE REF TO zcl_rest_http_client,
         lt_header_fields    TYPE tihttpnvp,
         wa_header_fields    TYPE ihttpnvp.
 

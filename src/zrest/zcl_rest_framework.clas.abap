@@ -76,7 +76,7 @@ public section.
       value(RESULT) type ref to IF_HTTP_CLIENT .
   methods GET_REST_CLIENT
     returning
-      value(RESULT) type ref to CL_REST_HTTP_CLIENT .
+      value(RESULT) type ref to ZCL_REST_HTTP_CLIENT .
   methods IS_RETRY
     returning
       value(RESULT) type ABAP_BOOL .
@@ -135,7 +135,7 @@ private section.
   class-data REQUEST_HEADER_STRING type STRING .
   data CALLING_PROGRAM_NAME type ZCLASSNAME .
   data CALLING_METHOD_NAME type ZCLASSNAME .
-  data REST_CLIENT type ref to CL_REST_HTTP_CLIENT .
+  data REST_CLIENT type ref to ZCL_REST_HTTP_CLIENT .
   data HTTP_CLIENT type ref to IF_HTTP_CLIENT .
   data SUBMIT_DATE type SY-DATUM .
   data SUBMIT_TIME type SY-UZEIT .
@@ -155,6 +155,7 @@ private section.
   constants OPTIONS type CHAR8 value 'OPTIONS' ##NO_TEXT.
   constants POST type CHAR8 value 'POST' ##NO_TEXT.
   constants PUT type CHAR8 value 'PUT' ##NO_TEXT.
+  constants PATCH type CHAR8 value 'PATCH' ##NO_TEXT.
   data REQUEST type ref to IF_REST_ENTITY .
   data RESPONSE type ref to IF_REST_ENTITY .
   data HTTP_STATUS type I .
@@ -201,7 +202,7 @@ private section.
     importing
       !IV_HTTP_CLIENT type ref to IF_HTTP_CLIENT
     returning
-      value(RV_REST_CLIENT) type ref to CL_REST_HTTP_CLIENT .
+      value(RV_REST_CLIENT) type ref to ZCL_REST_HTTP_CLIENT .
   methods CREATE_REQUEST_ENTITY
     importing
       !IV_MULTIPART type ABAP_BOOL default ABAP_FALSE
@@ -787,6 +788,8 @@ ENDMETHOD.
               rest_client->if_rest_resource~post(  request ).
             WHEN  put.
               rest_client->if_rest_resource~put(   request ).
+            WHEN patch.
+              rest_client->patch( request ).
           ENDCASE.
 *Log End parameters
           log_end_params( ).
