@@ -11,7 +11,7 @@ public section.
   methods GET_AAD_TOKEN
     importing
       value(IV_CLIENT_ID) type STRING
-      value(IV_RESOURCE) type STRING
+      value(IV_REDIRECT_URI) type STRING
     exporting
       value(EV_AAD_TOKEN) type STRING
       value(EV_RESPONSE) type STRING
@@ -36,7 +36,7 @@ private section.
   methods GET_AAD_TOKEN_CLNT_CRED
     importing
       value(IV_CLIENT_ID) type STRING
-      value(IV_RESOURCE) type STRING
+      value(IV_REDIRECT_URI) type STRING
     exporting
       value(EV_AAD_TOKEN) type STRING
       value(EV_RESPONSE) type STRING
@@ -68,7 +68,7 @@ METHOD get_aad_token.
     CALL METHOD me->get_aad_token_clnt_cred
       EXPORTING
         iv_client_id = iv_client_id
-        iv_resource  = iv_resource
+        iv_redirect_uri  = iv_redirect_uri
       IMPORTING
         ev_aad_token = ev_aad_token
         ev_response  = ev_response.
@@ -105,8 +105,8 @@ ENDMETHOD.
       CREATE OBJECT form_data_helper
         EXPORTING
           io_entity = lo_request.
-      wa_params-name = 'resource'.
-      wa_params-value =  iv_resource .
+      wa_params-name = 'redirect_uri'.
+      wa_params-value =  iv_redirect_uri .
       APPEND wa_params TO it_params.
       CLEAR wa_params.
       wa_params-name = 'client_id'.
@@ -130,6 +130,10 @@ ENDMETHOD.
       CLEAR wa_params.
       wa_params-name = 'grant_type'.
       wa_params-value = 'client_credentials'.
+      APPEND wa_params TO it_params.
+      CLEAR wa_params.
+      wa_params-name = 'scope'.
+      wa_params-value = 'https://microsoftgraph.chinacloudapi.cn/.default'.
       APPEND wa_params TO it_params.
       CLEAR wa_params.
       go_rest_api->set_request_header( iv_name = 'Content-Type'  iv_value = lv_mediatype ).
