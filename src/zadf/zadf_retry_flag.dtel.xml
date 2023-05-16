@@ -3,18 +3,18 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <DD04V>
-    <ROLLNAME>ZADF_CLIENT_ID</ROLLNAME>
+    <ROLLNAME>ZADF_RETRY_FLAG</ROLLNAME>
     <DDLANGUAGE>E</DDLANGUAGE>
-    <DOMNAME>ZADF_CLIENT_ID</DOMNAME>
+    <DOMNAME>XFIELD</DOMNAME>
     <HEADLEN>55</HEADLEN>
     <SCRLEN1>10</SCRLEN1>
     <SCRLEN2>20</SCRLEN2>
     <SCRLEN3>40</SCRLEN3>
-    <DDTEXT>Azure Client ID</DDTEXT>
-    <REPTEXT>Azure Client ID</REPTEXT>
-    <SCRTEXT_S>Client ID</SCRTEXT_S>
-    <SCRTEXT_M>Azure Client ID</SCRTEXT_M>
-    <SCRTEXT_L>Azure Client ID</SCRTEXT_L>
+    <DDTEXT>Retry Flag</DDTEXT>
+    <REPTEXT>Retry Flag</REPTEXT>
+    <SCRTEXT_S>Retry Flag</SCRTEXT_S>
+    <SCRTEXT_M>Retry Flag</SCRTEXT_M>
+    <SCRTEXT_L>Retry Flag</SCRTEXT_L>
     <DTELMASTER>E</DTELMASTER>
     <REFKIND>D</REFKIND>
    </DD04V>
